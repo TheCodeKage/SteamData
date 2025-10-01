@@ -6,6 +6,9 @@ import seaborn as sns
 st.set_page_config(page_title="Steam Sales Insights", layout="wide")
 st.title("🎮 Steam Sales Data Dashboard")
 
+if 'df' not in st.session_state:
+    st.session_state['df'] = pd.read_csv('datasets/steam_sales.csv')
+
 # Load dataframe from session_state
 df = st.session_state['df']
 
