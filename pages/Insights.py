@@ -63,7 +63,7 @@ st.pyplot(fig)
 
 # --- Graph 5: Average Discount by Release Year ---
 st.subheader("Average Discount by Release Year")
-df['Year'] = pd.to_datetime(df['Release Date'], errors='coerce').dt.year
+filtered_df['Year'] = pd.to_datetime(df['Release Date'], errors='coerce').dt.year
 avg_discount = filtered_df.groupby('Year')['Discount%'].mean().dropna()
 fig, ax = plt.subplots()
 avg_discount.plot(kind='bar', ax=ax, color='coral')
