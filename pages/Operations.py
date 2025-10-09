@@ -12,13 +12,11 @@ st.markdown(
 
 st.write("---")
 
-# Column operations
 st.subheader("🧾 Column Operations")
 
 if 'df' not in st.session_state:
     st.session_state['df'] = read_csv('datasets/steam_sales.csv')
 
-# Drop columns
 drop_cols = st.multiselect("Select columns to drop", st.session_state['df'].columns)
 if st.button("Confirm Drop Columns"):
     if drop_cols:
@@ -30,7 +28,6 @@ if st.button("Confirm Drop Columns"):
     else:
         st.warning("⚠️ No columns selected to drop.")
 
-# Rename columns
 st.write("✏️ Rename Columns")
 col_to_rename = st.selectbox("Select column to rename", st.session_state['df'].columns)
 new_col_name = st.text_input("Enter new column name")
@@ -43,7 +40,6 @@ if st.button("Confirm Rename"):
 
 st.write("---")
 
-# Missing values handling
 st.subheader("⚠️ Handle Missing Values")
 missing_option = st.radio("Choose an action", ["Do Nothing", "Drop Rows with Missing Values", "Fill Missing Values"])
 if missing_option == "Drop Rows with Missing Values":
@@ -61,7 +57,6 @@ elif missing_option == "Fill Missing Values":
 
 st.write("---")
 
-# Filter rows
 st.subheader("🔍 Filter Rows")
 filter_col = st.selectbox("Select column to filter", st.session_state['df'].columns)
 unique_vals = st.session_state['df'][filter_col].unique().tolist()
